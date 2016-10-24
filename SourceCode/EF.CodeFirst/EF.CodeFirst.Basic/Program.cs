@@ -18,6 +18,12 @@ namespace EF.CodeFirst.Basic
         {
             Operator.HandleProcess(() =>
             {
+                #region 此处用于配置数据库的初始化行为，此处的三个泛型类可以继承后扩展自定义操作
+                //Database.SetInitializer(new DropCreateDatabaseAlways<DataContext>());
+                //Database.SetInitializer(new CreateDatabaseIfNotExists<DataContext>());
+                Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataContext>());
+                #endregion
+
                 using (var db = new DataContext())
                 {
                     var tmp = Guid.NewGuid().ToString("N");
@@ -75,6 +81,7 @@ namespace EF.CodeFirst.Basic
             /// <summary>
             /// 属性列
             /// </summary>
+            //[StringLength(50)]
             public string Msg { get; set; }
         }
     }
