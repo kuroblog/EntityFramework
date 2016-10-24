@@ -47,19 +47,9 @@ namespace EF.CodeFirst.Basic
         public class DataContext : DbContext
         {
             /// <summary>
-            /// 本地localdb连接字符串，与配置文件一致
-            /// </summary>
-            private const string LocalDbConnString = nameof(LocalDbConnString);
-
-            /// <summary>
-            /// 远程标准数据库连接字符串，与配置文件一致
-            /// </summary>
-            private const string MssqlDbConnString = nameof(MssqlDbConnString);
-
-            /// <summary>
             /// 默认构造函数，使用哪个数据取决于传入基类构造函数的连接字符串
             /// </summary>
-            public DataContext() : base(LocalDbConnString) { }
+            public DataContext() : base(Parameters.LocalDbConnString) { }
 
             /// <summary>
             /// 设置数据库对象
