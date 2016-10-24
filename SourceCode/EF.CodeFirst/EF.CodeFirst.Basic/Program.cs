@@ -1,6 +1,7 @@
 ﻿
 namespace EF.CodeFirst.Basic
 {
+    using K.Common;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -16,7 +17,7 @@ namespace EF.CodeFirst.Basic
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            try
+            Operator.HandleProcess(() =>
             {
                 using (var db = new DataContext())
                 {
@@ -25,51 +26,56 @@ namespace EF.CodeFirst.Basic
                     db.Array.Add(new A { Msg = tmp });
                     var commit = db.SaveChanges();
 
-                    Console.WriteLine($"commit value is {tmp}, result is {commit}{Environment.NewLine}results:");
+                    Console.WriteLine($"提交数据({tmp})，返回({commit}){Environment.NewLine}遍历当前数据集：");
 
                     db.Array.ToList().ForEach(p => Console.WriteLine($"id:{p.Id}; msg:{p.Msg}"));
                 }
-            }
-            catch (Exception ex)
-            {
-                var errors = new List<Tuple<int, string, string>>();
-                var tmp = ex;
-                var index = 0;
-                do
-                {
-                    errors.Add(Tuple.Create(++index, ex.GetType().Name, ex.Message.Replace(Environment.NewLine, string.Empty)));
-                    ex = tmp.InnerException == null ? null : ex.InnerException;
-                } while (ex != null);
-
-                if (errors.Count > 0)
-                {
-                    Console.WriteLine($"执行完成，发生以下错误：{Environment.NewLine}");
-                    errors.ForEach(p => Console.WriteLine($"{p.Item1.ToString().PadLeft(2, '0')}）异常类型:{p.Item2};异常信息:{p.Item3}{Environment.NewLine}"));
-                }
-            }
+            });
 
             Console.WriteLine("主函数执行完成，按任意键退出……");
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// 继承DbContext，实现自定义处理
+        /// </summary>
         public class DataContext : DbContext
         {
+            /// <summary>
+            /// 本地localdb连接字符串，与配置文件一致
+            /// </summary>
             private const string LocalDbConnString = nameof(LocalDbConnString);
 
+            /// <summary>
+            /// 远程标准数据库连接字符串，与配置文件一致
+            /// </summary>
             private const string MssqlDbConnString = nameof(MssqlDbConnString);
 
+            /// <summary>
+            /// 默认构造函数，使用哪个数据取决于传入基类构造函数的连接字符串
+            /// </summary>
             public DataContext() : base(LocalDbConnString) { }
 
-
+            /// <summary>
+            /// 设置数据库对象
+            /// </summary>
             public DbSet<A> Array { get; set; }
         }
 
+        /// <summary>
+        /// 数据库对应的实体
+        /// </summary>
         public class A
         {
+            /// <summary>
+            /// 主键列
+            /// </summary>
             [Key]
             public int Id { get; set; }
 
-            [StringLength(50)]
+            /// <summary>
+            /// 属性列
+            /// </summary>
             public string Msg { get; set; }
         }
     }
