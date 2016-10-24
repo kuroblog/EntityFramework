@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{65A3B9EA-4F95-4E7E-81CC-B234F81682E1}</ProjectGuid>
+    <ProjectGuid>{859DCE56-8CE0-41CE-B32B-C90EF12B3BA1}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EF.CodeFirst.Basic</RootNamespace>
-    <AssemblyName>EF.CodeFirst.Basic</AssemblyName>
+    <RootNamespace>EF.CodeFirst.ExistingDb</RootNamespace>
+    <AssemblyName>EF.CodeFirst.ExistingDb</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,6 +45,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +55,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContext.cs" />
+    <Compile Include="Migrations\201610242037595_InitialCreate.cs" />
+    <Compile Include="Migrations\201610242037595_InitialCreate.Designer.cs">
+      <DependentUpon>201610242037595_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610242039401_AddTabA.cs" />
+    <Compile Include="Migrations\201610242039401_AddTabA.Designer.cs">
+      <DependentUpon>201610242039401_AddTabA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,6 +77,14 @@
       <Project>{30648dbb-58b5-49c7-ab47-52b1f1356b9e}</Project>
       <Name>K.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610242037595_InitialCreate.resx">
+      <DependentUpon>201610242037595_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610242039401_AddTabA.resx">
+      <DependentUpon>201610242039401_AddTabA.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
