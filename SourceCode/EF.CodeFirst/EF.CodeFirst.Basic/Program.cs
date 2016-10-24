@@ -14,6 +14,9 @@ namespace EF.CodeFirst.Basic
         /// 演示最基础的CodeFirst的使用方法
         /// </summary>
         /// <param name="args"></param>
+        /// <remarks>
+        /// https://msdn.microsoft.com/zh-cn/data/jj193542
+        /// </remarks>
         static void Main(string[] args)
         {
             Operator.HandleProcess(() =>

@@ -16,8 +16,9 @@ namespace EF.CodeFirst.UsingMigration
         /// <remarks>
         /// 在生产环境下，为防止数据丢失应按照以下步骤来操作
         /// 在本地开发环境运行以下命令生成脚本
-        /// update-database -script -sourcemigration: $initialdatabase -targetmigration:dbmigration
-        /// dbmigration就是Migrations文件夹下的文件，即每次实体结构变更时添加的，用于update-database的类
+        /// Update-Database -Script -SourceMigration $initialdatabase -TargetMigration MigrationFileName
+        /// 省略-TargetMigration MigrationFileName参数，会默认以最近的一个MigrationFileName来生成脚本
+        /// 具体参见命令 get-help Update-Database -detailed
         /// 在生产环境运行以上命令生成的脚本
         /// </remarks>
         /// <param name="args"></param>
