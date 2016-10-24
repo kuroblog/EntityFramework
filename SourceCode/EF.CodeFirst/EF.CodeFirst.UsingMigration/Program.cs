@@ -2,6 +2,7 @@
 namespace EF.CodeFirst.UsingMigration
 {
     using K.Common;
+    using Migrations;
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.Data.Entity;
@@ -28,6 +29,8 @@ namespace EF.CodeFirst.UsingMigration
                 //Database.SetInitializer(new DropCreateDatabaseAlways<DataContext>());
                 //Database.SetInitializer(new CreateDatabaseIfNotExists<DataContext>());
                 //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataContext>());
+                //扩展MigrateDatabaseToLatestVersion类，需要修改对应Configuration的访问级别
+                //Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataContext, Configuration>());
                 #endregion
 
                 using (var db = new DataContext())
