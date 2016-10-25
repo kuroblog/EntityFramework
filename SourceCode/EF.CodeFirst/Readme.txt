@@ -1,3 +1,5 @@
+MSDN教程
+https://msdn.microsoft.com/zh-cn/data/ee712907
 
 对新数据库使用Code First
 https://msdn.microsoft.com/zh-cn/data/jj193542
