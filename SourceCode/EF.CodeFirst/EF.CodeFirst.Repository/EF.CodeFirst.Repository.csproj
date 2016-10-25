@@ -53,6 +53,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Codes\BasicContext.cs" />
+    <Compile Include="Codes\BasicRepository.cs" />
+    <Compile Include="Codes\EntityRepositories.cs" />
+    <Compile Include="Codes\EntityTypes.cs" />
+    <Compile Include="Codes\EntityTypeConfigurations.cs" />
+    <Compile Include="Migrations\201610251952217_InitialCreate.cs" />
+    <Compile Include="Migrations\201610251952217_InitialCreate.Designer.cs">
+      <DependentUpon>201610251952217_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610252013546_RefactorStudent.cs" />
+    <Compile Include="Migrations\201610252013546_RefactorStudent.Designer.cs">
+      <DependentUpon>201610252013546_RefactorStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610252024354_RefactorStudentRemark.cs" />
+    <Compile Include="Migrations\201610252024354_RefactorStudentRemark.Designer.cs">
+      <DependentUpon>201610252024354_RefactorStudentRemark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610252034166_AddSexColToStudent.cs" />
+    <Compile Include="Migrations\201610252034166_AddSexColToStudent.Designer.cs">
+      <DependentUpon>201610252034166_AddSexColToStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610252040490_AddRefOfStudentAndRole.cs" />
+    <Compile Include="Migrations\201610252040490_AddRefOfStudentAndRole.Designer.cs">
+      <DependentUpon>201610252040490_AddRefOfStudentAndRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610252047477_EnableRefDeleteForStudentRemark.cs" />
+    <Compile Include="Migrations\201610252047477_EnableRefDeleteForStudentRemark.Designer.cs">
+      <DependentUpon>201610252047477_EnableRefDeleteForStudentRemark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610252049433_AddGradeToStudent.cs" />
+    <Compile Include="Migrations\201610252049433_AddGradeToStudent.Designer.cs">
+      <DependentUpon>201610252049433_AddGradeToStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610252053095_RefactorTables.cs" />
+    <Compile Include="Migrations\201610252053095_RefactorTables.Designer.cs">
+      <DependentUpon>201610252053095_RefactorTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -65,6 +103,32 @@
       <Project>{30648dbb-58b5-49c7-ab47-52b1f1356b9e}</Project>
       <Name>K.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610251952217_InitialCreate.resx">
+      <DependentUpon>201610251952217_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610252013546_RefactorStudent.resx">
+      <DependentUpon>201610252013546_RefactorStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610252024354_RefactorStudentRemark.resx">
+      <DependentUpon>201610252024354_RefactorStudentRemark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610252034166_AddSexColToStudent.resx">
+      <DependentUpon>201610252034166_AddSexColToStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610252040490_AddRefOfStudentAndRole.resx">
+      <DependentUpon>201610252040490_AddRefOfStudentAndRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610252047477_EnableRefDeleteForStudentRemark.resx">
+      <DependentUpon>201610252047477_EnableRefDeleteForStudentRemark.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610252049433_AddGradeToStudent.resx">
+      <DependentUpon>201610252049433_AddGradeToStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610252053095_RefactorTables.resx">
+      <DependentUpon>201610252053095_RefactorTables.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
