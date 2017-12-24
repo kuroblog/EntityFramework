@@ -20,6 +20,8 @@ namespace Sample.ConsoleApp
     {
         public LogConfiguration()
         {
+            ToTable("logs");
+
             HasKey(p => p.Id);
             Property(p => p.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
