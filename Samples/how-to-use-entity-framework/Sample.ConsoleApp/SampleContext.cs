@@ -1,13 +1,23 @@
 ﻿
 namespace Sample.ConsoleApp
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using System.Data.Entity;
 
-    class SampleContext
+    public class SampleContext : DbContext
     {
+        public const string nameOrConnectionString = "SampleContext";
+
+        public SampleContext() : base(nameOrConnectionString: nameOrConnectionString) { }
+
+        public SampleContext(string nameOrConnectionString = nameOrConnectionString) : base(nameOrConnectionString: nameOrConnectionString) { }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Configurations.AddFromAssembly(typeof(SampleContext).Assembly);
+        }
+
+        public DbSet<LogEntity> Logs { get; set; }
     }
 }
